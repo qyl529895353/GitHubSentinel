@@ -19,5 +19,6 @@ class Scheduler:
             for repo in subscriptions:
                 updates = self.github_client.export_daily_progress(repo)
                 markdown_file_path = self.report_generator.export_daily_progress(repo, updates)
-                self.report_generator.generate_daily_report(markdown_file_path)
+                report, report_file_path = self.report_generator.generate_daily_report(markdown_file_path)
+                self.notifier(report)
             time.sleep(self.interval)
