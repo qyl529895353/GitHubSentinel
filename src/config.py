@@ -12,8 +12,8 @@ class Config:
             config = json.load(f)
             self.github_token = config.get('github_token')
             self.notification_settings = config.get('notification_settings')
-            self.subscriptions_file_map = config.get('subscriptions_file', {})
-            self.subscriptions_file = self.subscriptions_file_map.keys()
+            self.subscriptions_file = config.get('subscriptions_file', {})
+            self.subscriptions_file_map = {"14": "xt/nserver_chat", "65": "umi/umi_admin"}
             self.update_interval = config.get('update_interval', 24 * 60 * 60)  # Default to 24 hours
             self.baidu_app_key = config.get("BAIDU_KEY")
             self.baidu_app_secret = config.get("BAIDU_SECRET")
