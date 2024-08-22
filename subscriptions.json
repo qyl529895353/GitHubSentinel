@@ -1,5 +1,4 @@
-[
-    "langchain-ai/langchain",
-    "DjangoPeng/openai-quickstart",
-    "ollama/ollama"
-]
+{
+    "14": "xt/nserver_chat",
+    "65": "umi/umi_admin"
+}

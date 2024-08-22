@@ -2,14 +2,15 @@ import gradio as gr
 
 from config import Config
 from github_client import GitHubClient
+from gitlab_client import GitLabClient
 from report_generator import ReportGenerator
-from llm import LLM
+from llm import LLM, ChatErnieBotTurbo
 from subscription_manager import SubscriptionManager
 from logger import LOG
 
 config = Config()
-github_client = GitHubClient(config.github_token)
-llm = LLM()
+github_client = GitLabClient(config.github_token)
+llm = ChatErnieBotTurbo()
 report_generator = ReportGenerator(llm)
 subscription_manager = SubscriptionManager(config.subscriptions_file)
 

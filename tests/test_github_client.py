@@ -1,5 +1,6 @@
 import unittest
 from src.github_client import GitHubClient
+from src.gitlab_client import GitLabClient
 
 class TestGitHubClient(unittest.TestCase):
     def test_fetch_updates(self):

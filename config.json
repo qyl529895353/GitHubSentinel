@@ -1,9 +1,11 @@
 {
-    "github_token": "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",
+    "github_token": "glpat-S4u8G37ZjNQVbf_x55Pv",
     "notification_settings": {
-        "email": "your_email@example.com",
+        "email": "529895353@qq.com",
         "slack_webhook_url": "your_slack_webhook_url"
     },
     "subscriptions_file": "subscriptions.json",
-    "update_interval": 86400
+    "update_interval": 86400,
+    "BAIDU_KEY": "97cf690078ea453a9feed6b75b937b1e",
+    "BAIDU_SECRET": "97cf690078ea453a9feed6b75b937b1e",
 }

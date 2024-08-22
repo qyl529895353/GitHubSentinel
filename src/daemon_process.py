@@ -5,9 +5,10 @@ import time
 
 from config import Config
 from github_client import GitHubClient
+from gitlab_client import GitLabClient
 from notifier import Notifier
 from report_generator import ReportGenerator
-from llm import LLM
+from llm import LLM, ChatErnieBotTurbo
 from subscription_manager import SubscriptionManager
 from scheduler import Scheduler
 from logger import LOG
@@ -17,9 +18,9 @@ def run_scheduler(scheduler):
 
 def main():
     config = Config()
-    github_client = GitHubClient(config.github_token)
+    github_client = GitLabClient(config.github_token)
     notifier = Notifier(config.notification_settings)
-    llm = LLM()
+    llm = ChatErnieBotTurbo()
     report_generator = ReportGenerator(llm)
     subscription_manager = SubscriptionManager(config.subscriptions_file)
     
