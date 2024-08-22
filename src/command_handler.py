@@ -1,5 +1,5 @@
 # src/command_handler.py
-
+from send_mail import send_mail_info
 import argparse
 
 class CommandHandler:
@@ -60,8 +60,12 @@ class CommandHandler:
             print(f"  - {sub}")
 
     def export_daily_progress(self, args):
-        self.github_client.export_daily_progress(args.repo)
+        flle_path = self.github_client.export_daily_progress(args.repo)
         print(f"Exported daily progress for repository: {args.repo}")
+        report, report_file_path = self.report_generator.generate_daily_report(flle_path)
+        send_mail_info(report, report_file_path)
+
+
 
     def export_progress_by_date_range(self, args):
         self.github_client.export_progress_by_date_range(args.repo, days=args.days)

@@ -57,21 +57,23 @@ class ChatErnieBotTurbo:
 
         data = {
             "messages": [
-                {"role": "system", "content": "你是项目报告总结达人,擅长将项目不同片段信息进行整合并撰写出让boss满意的简报,要求撰写的内容使用中文"},
-                {"role": "user", "content": prompt}
+                # {"role": "system", "content": "你是项目报告总结达人,擅长将项目不同片段信息进行整合并撰写出让boss满意的简报,要求撰写的内容使用中文 ，以下待处理的内容 ###"},
+                {"role": "user", "content": "你是项目报告总结达人,擅长将项目不同片段信息进行整合并撰写出让boss满意的简报,要求撰写的内容使用中文 ，以下待处理的内容 ###" + prompt}
             ],
             "temperature": 0.5,
-            "stream": False
+            "stream": False,
+            "user_id": "test_suer"
         }
         url = f"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/{self.default_model}?access_token={base_config.access_token}"
 
         header = {
             "Content-Type": "application/json"
         }
+        print(data)
         try:
             resp = requests.post(url, json=data, headers=header, stream=False).json()
         except Exception as e:
             LOG.error("An error occurred while generating the report: {}", e)
             raise
-
-        return resp.text["result"]
+        print(resp)
+        return resp["result"]

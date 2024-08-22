@@ -27,6 +27,7 @@ class GitLabClient:
 
     def fetch_commits(self, project_id, since=None, until=None):
         url = f'{gitlab_url}/api/v4/projects/{project_id}/repository/commits'
+
         response = requests.get(url, headers=self.headers)
         response.raise_for_status()
 
@@ -53,11 +54,13 @@ class GitLabClient:
             'created_before': until
         }
         response = requests.get(url, headers=self.headers, params=params)
+
         response.raise_for_status()
         return response.json()
 
     def export_daily_progress(self, project_id):
         today = datetime.now().date().isoformat()
+        print("today", project_id)
         updates = self.fetch_updates(project_id, since=today)
         cn_repo = base_config.subscriptions_file_map[str(project_id)].replace("/", "_")
         repo_dir = os.path.join('daily_progress', cn_repo)

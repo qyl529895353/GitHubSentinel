@@ -5,12 +5,12 @@ class Config:
     def __init__(self):
         self.access_token = None
         self.load_config()
-        self.gitlab_url = "http://39.108.179.79:8929"
 
     def load_config(self):
         with open('config.json', 'r') as f:
             config = json.load(f)
             self.github_token = config.get('github_token')
+            self.gitlab_url = config.get("GITLAB_URL")
             self.notification_settings = config.get('notification_settings')
             self.subscriptions_file = config.get('subscriptions_file', {})
             self.subscriptions_file_map = {"14": "xt/nserver_chat", "65": "umi/umi_admin"}
